@@ -28,7 +28,8 @@ public class Entity : MonoBehaviour
     [SerializeField] private Vector2 knockDirection;
     [SerializeField] private float knockDuration;
 
-    public EntityFx entityFx;
+    [HideInInspector]public EntityFx entityFx;
+    [HideInInspector] public CharacterStats stats;
     #endregion
     #region Components
     public Animator animator { get;set; }
@@ -40,6 +41,7 @@ public class Entity : MonoBehaviour
         animator= GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         entityFx=GetComponent<EntityFx>();
+        stats= GetComponent<CharacterStats>();
     }
     protected virtual void Start()
     {

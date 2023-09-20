@@ -40,7 +40,7 @@ public class EnemySamurai : Enemy
         battleState=new EnemySamuraiBattleState(this, stateMachine, "Run", this);
         attackState=new EnemySamuraiAttackState(this, stateMachine, "Attack", this);
         stunState=new EnemySamuraiStunState(this, stateMachine, "Stunned", this);
-        player=GameObject.Find("Player").transform;
+        player=PlayerManager.instance.player.transform;
     }
 
     protected override void Start()

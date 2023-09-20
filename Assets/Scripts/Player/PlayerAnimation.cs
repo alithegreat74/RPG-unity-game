@@ -21,8 +21,12 @@ public class PlayerAnimation :MonoBehaviour
             if (collider.GetComponent<Enemy>()!=null)
             {
                 if (collider.GetComponent<Enemy>().canGetStunned())
-                    Debug.Log("stunned");
-                collider.GetComponent<Enemy>().damage(player.facingDirection);
+                    collider.GetComponent<Enemy>().stats.takeDamge(player.stats.stunDamage);
+                else
+                {
+                    collider.GetComponent<Enemy>().damage(player.facingDirection);
+                    collider.GetComponent<Enemy>().stats.takeDamge(player.stats.damage);
+                }
             }
             
         }
