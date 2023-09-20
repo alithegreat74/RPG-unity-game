@@ -19,7 +19,12 @@ public class PlayerAnimation :MonoBehaviour
         foreach(var collider in colliders)
         {
             if (collider.GetComponent<Enemy>()!=null)
+            {
+                if (collider.GetComponent<Enemy>().canGetStunned())
+                    Debug.Log("stunned");
                 collider.GetComponent<Enemy>().damage(player.facingDirection);
+            }
+            
         }
     }
 }

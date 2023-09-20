@@ -34,5 +34,6 @@ public class EnemyState
     public virtual void Update()
     {
         timer-=Time.deltaTime;
+
     }
 }

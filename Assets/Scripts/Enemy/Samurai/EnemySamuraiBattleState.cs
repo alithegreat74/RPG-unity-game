@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySamuraiBattleState : EnemyState
+public class EnemySamuraiBattleState : EnemySamuraiGroundedState
 {
-    private EnemySamurai samurai;
     private Transform player;
     
     private int playerDirection;
-    public EnemySamuraiBattleState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animationBoolName,EnemySamurai _samurai) : base(_enemy, _stateMachine, _animationBoolName)
+
+    public EnemySamuraiBattleState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animationBoolName, EnemySamurai _samurai) : base(_enemy, _stateMachine, _animationBoolName, _samurai)
     {
-        this.samurai = _samurai;
     }
 
     public override void Enter()

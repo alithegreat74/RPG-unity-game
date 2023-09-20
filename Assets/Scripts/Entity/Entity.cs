@@ -28,7 +28,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private Vector2 knockDirection;
     [SerializeField] private float knockDuration;
 
-    private EntityFx entityFx;
+    public EntityFx entityFx;
     #endregion
     #region Components
     public Animator animator { get;set; }

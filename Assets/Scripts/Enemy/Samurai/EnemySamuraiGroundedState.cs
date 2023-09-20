@@ -25,5 +25,7 @@ public class EnemySamuraiGroundedState : EnemyState
         base.Update();
         if (samurai.playerDetection() && Time.time>samurai.lastTimeAttack + samurai.attackCooldown && !samurai.wallDetected())
             stateMachine.ChangeState(samurai.battleState);
+        if (Input.GetKeyDown(KeyCode.U))
+            stateMachine.ChangeState(samurai.stunState);
     }
 }

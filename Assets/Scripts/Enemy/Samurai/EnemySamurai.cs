@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemySamurai : Enemy
@@ -17,6 +18,9 @@ public class EnemySamurai : Enemy
     public float strikingDistance;
     public float disengageDistance;
 
+    
+
+
     private Transform player;
 
     [SerializeField]private LayerMask whatIsPlayer;
@@ -26,6 +30,7 @@ public class EnemySamurai : Enemy
     public EnemySamuraiWalkState walkState { get; private set; }
     public EnemySamuraiBattleState battleState { get; private set; }
     public EnemySamuraiAttackState attackState { get; private set; }
+    public EnemySamuraiStunState stunState { get; private set; }
     #endregion
     protected override void Awake()
     {
@@ -34,6 +39,7 @@ public class EnemySamurai : Enemy
         walkState=new EnemySamuraiWalkState(this, stateMachine, "Walk", this);
         battleState=new EnemySamuraiBattleState(this, stateMachine, "Run", this);
         attackState=new EnemySamuraiAttackState(this, stateMachine, "Attack", this);
+        stunState=new EnemySamuraiStunState(this, stateMachine, "Stunned", this);
         player=GameObject.Find("Player").transform;
     }
 
@@ -68,5 +74,14 @@ public class EnemySamurai : Enemy
     public void animationFinishTrigger()
     {
         stateMachine.currentState.isAnimationTriggered = true;
+    }
+    public override bool canGetStunned()
+    {
+        if (base.canGetStunned())
+        {
+            stateMachine.ChangeState(stunState);
+            return true;
+        }
+        return false;
     }
 }

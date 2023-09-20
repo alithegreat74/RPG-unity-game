@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySamuraiAttackState : EnemyState
+public class EnemySamuraiAttackState : EnemySamuraiGroundedState
 {
-    private EnemySamurai samurai;
-    
-
-    public EnemySamuraiAttackState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animationBoolName, EnemySamurai _samurai) : base(_enemy, _stateMachine, _animationBoolName)
+    public EnemySamuraiAttackState(Enemy _enemy, EnemyStateMachine _stateMachine, string _animationBoolName, EnemySamurai _samurai) : base(_enemy, _stateMachine, _animationBoolName, _samurai)
     {
-        this.samurai=_samurai;
     }
 
     public override void Enter()

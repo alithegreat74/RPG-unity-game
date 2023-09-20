@@ -22,4 +22,9 @@ public class EnemySamuraiAnimationTrigger : MonoBehaviour
                 collider.GetComponent<Player>().damage(samurai.facingDirection);
         }
     }
+    private void openStunWindow() => samurai.openStunWindow();
+
+    private void closeStunWindow()=>samurai.closeStunWindow();
+
+    
 }
