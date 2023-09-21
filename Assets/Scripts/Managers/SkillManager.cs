@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    public static SkillManager instance;
-
-    private void Awake()
+    public static SkillManager instance
     {
-        if(instance!=null)
-            Destroy(instance);
-        else 
-            instance= this;
+        get
+        {
+            if (Instance == null)
+                Instance = FindObjectOfType(typeof(SkillManager)) as SkillManager;
+
+            return Instance;
+        }
+        set
+        {
+            instance = value;
+        }
     }
+    private static SkillManager Instance;
+
 }

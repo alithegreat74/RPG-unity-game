@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager instance;
+    public static PlayerManager instance
+    {
+        get
+        {
+            if (Instance == null)
+                Instance = FindObjectOfType(typeof(PlayerManager)) as PlayerManager;
+
+            return Instance;
+        }
+        set
+        {
+            instance = value;
+        }
+    }
+    private static PlayerManager Instance;
     public Player player;
 
-    private void Awake()
-    {
-        if(instance!=null)
-            Destroy(instance);
-        else
-            instance= this;
-    }
+
+    
 
 }
