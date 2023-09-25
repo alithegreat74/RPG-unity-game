@@ -11,6 +11,7 @@ public class PlayerIdleState : PlayerGroundState
     public override void Enter()
     {
         base.Enter();
+        timer=1f;
     }
 
     public override void Exit()
@@ -21,7 +22,13 @@ public class PlayerIdleState : PlayerGroundState
     public override void Update()
     {
         base.Update();
-        if (xInput!=0 && !player.wallDetected() && !player.isBusy)
+        if (xInput!=0 && !player.wallDetected() && !player.isBusy && !inventory.activeUI)
             stateMachine.ChangeState(player.moveState);
+
+        if(inventory.activeUI && Input.GetKeyDown(KeyCode.I)  && timer<0)
+        {
+            Debug.Log("Close Inventory");
+            inventory.disableUI();
+        }
     }
 }

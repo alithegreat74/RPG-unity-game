@@ -9,6 +9,7 @@ public class PlayerState
     protected string animationBoolName;
     protected float timer;
     protected float xInput;
+    protected Inventory inventory;
 
     public PlayerState(Player _player, PlayerStateMachine _stateMachine,string _animationBoolName)
     {
@@ -21,6 +22,8 @@ public class PlayerState
     public virtual void Enter()
     {
         player.animator.SetBool(animationBoolName, true);
+        inventory=Inventory.instance;
+        
 
     }
     public virtual void Update()
@@ -31,7 +34,14 @@ public class PlayerState
             player.flip();
 
         timer-=Time.deltaTime;
-        
+
+        if (!inventory.activeUI && Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("Open Inventory");
+            inventory.enableUI();
+            stateMachine.ChangeState(player.idleState);
+        }
+
     }
     public virtual void Exit()
     {
