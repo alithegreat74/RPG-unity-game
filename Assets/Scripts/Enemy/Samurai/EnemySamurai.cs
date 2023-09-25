@@ -31,6 +31,7 @@ public class EnemySamurai : Enemy
     public EnemySamuraiBattleState battleState { get; private set; }
     public EnemySamuraiAttackState attackState { get; private set; }
     public EnemySamuraiStunState stunState { get; private set; }
+    public EnemySamuraiDeathState deathState { get; private set; } 
     #endregion
     protected override void Awake()
     {
@@ -40,6 +41,7 @@ public class EnemySamurai : Enemy
         battleState=new EnemySamuraiBattleState(this, stateMachine, "Run", this);
         attackState=new EnemySamuraiAttackState(this, stateMachine, "Attack", this);
         stunState=new EnemySamuraiStunState(this, stateMachine, "Stunned", this);
+        deathState=new EnemySamuraiDeathState(this, stateMachine, "Death", this);
         player=PlayerManager.instance.player.transform;
     }
 
@@ -83,5 +85,10 @@ public class EnemySamurai : Enemy
             return true;
         }
         return false;
+    }
+
+    public void remove()
+    {
+        Destroy(gameObject);
     }
 }

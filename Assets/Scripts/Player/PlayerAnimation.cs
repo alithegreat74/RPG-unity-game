@@ -20,12 +20,14 @@ public class PlayerAnimation :MonoBehaviour
         {
             if (collider.GetComponent<Enemy>()!=null)
             {
-                if (collider.GetComponent<Enemy>().canGetStunned())
-                    collider.GetComponent<Enemy>().stats.takeDamge(player.stats.stunDamage);
+                Enemy enemy=collider.GetComponent<Enemy>();
+                CharacterStats target=collider.GetComponent<CharacterStats>();
+                if (enemy.canGetStunned())
+                    player.stats.doStunDamage(target);
                 else
                 {
-                    collider.GetComponent<Enemy>().damage(player.facingDirection);
-                    collider.GetComponent<Enemy>().stats.takeDamge(player.stats.damage);
+                    enemy.damage(player.facingDirection);
+                    player.stats.doDamage(target);
                 }
             }
             

@@ -15,11 +15,14 @@ public class EnemySamuraiAnimationTrigger : MonoBehaviour
     }
     private void attackTrigger()
     {
-        Collider2D[] colliders=Physics2D.OverlapCircleAll(samurai.attackPoint.position,samurai.attackRadius);  
-        foreach(var collider in colliders)
+        Collider2D[] colliders=Physics2D.OverlapCircleAll(samurai.attackPoint.position,samurai.attackRadius);
+        foreach (var collider in colliders)
         {
             if (collider.GetComponent<Player>()!=null)
+            {
                 collider.GetComponent<Player>().damage(samurai.facingDirection);
+                samurai.stats.doDamage(collider.GetComponent<CharacterStats>());
+            }
         }
     }
     private void openStunWindow() => samurai.openStunWindow();

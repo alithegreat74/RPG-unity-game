@@ -14,13 +14,13 @@ public class Enemy : Entity
     [Header("Attack Info")]
     public float attackCooldown;
     [HideInInspector] public float lastTimeAttack;
-    public EnemyStateMachine stateMachine { get; private set; }
+    public EnemyStateMachine stateMachine { get; private set; } 
 
     #endregion
     protected override void Awake()
     {
         base.Awake();
-        stateMachine = new EnemyStateMachine();
+        stateMachine=new EnemyStateMachine();
     }
 
     protected override void Start()

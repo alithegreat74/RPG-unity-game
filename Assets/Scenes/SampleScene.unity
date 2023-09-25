@@ -552,6 +552,7 @@ MonoBehaviour:
   knockDuration: 0.1
   entityFx: {fileID: 0}
   stats: {fileID: 0}
+  isDead: 0
   rb: {fileID: 0}
   stunDuration: 3
   stunDirection: {x: 10, y: 12}
@@ -610,13 +611,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 349159554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 228369f47e742ec42a749d7b1348e101, type: 3}
+  m_Script: {fileID: 11500000, guid: 85dde9aa0f9510540bf464681d227156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  stunDamage: 20
-  maxHealth: 100
-  currentHealt: 0
+  damage:
+    value: 10
+    modifiers: 
+  stunDamage:
+    value: 0
+    modifiers: 
+  maxHealth:
+    value: 50
+    modifiers: 
+  currentHealth: 0
 --- !u!1 &489117596
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +778,7 @@ MonoBehaviour:
   knockDuration: 0
   entityFx: {fileID: 0}
   stats: {fileID: 0}
+  isDead: 0
   rb: {fileID: 0}
   dashSpeed: 25
   dashTime: 0.2
@@ -783,7 +791,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513767737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.57, y: 0, z: 0}
+  m_LocalPosition: {x: -9.57, y: -0.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 990457153}
@@ -816,13 +824,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 513767737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 228369f47e742ec42a749d7b1348e101, type: 3}
+  m_Script: {fileID: 11500000, guid: 70c568fc509d62c42b08d72735178de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  stunDamage: 20
-  maxHealth: 100
-  currentHealt: 0
+  damage:
+    value: 10
+    modifiers: 
+  stunDamage:
+    value: 20
+    modifiers: 
+  maxHealth:
+    value: 20
+    modifiers: 
+  currentHealth: 0
 --- !u!1 &664539740
 GameObject:
   m_ObjectHideFlags: 0

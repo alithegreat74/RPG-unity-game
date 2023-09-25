@@ -48,6 +48,9 @@ public class EnemySamuraiBattleState : EnemySamuraiGroundedState
             stateMachine.ChangeState(samurai.idleState);
         }
 
+        if (player.gameObject.GetComponent<Player>().isDead)
+            stateMachine.ChangeState(samurai.idleState);
+
     }
 
     private bool canAttack()

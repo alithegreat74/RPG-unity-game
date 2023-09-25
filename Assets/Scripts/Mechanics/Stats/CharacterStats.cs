@@ -1,21 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class CharacterStats : MonoBehaviour
 {
-    public int damage;
-    public int stunDamage;
-    public int maxHealth;
-    [SerializeField] private int currentHealt;
+    public Stat damage;
+    public Stat stunDamage;
+    public Stat maxHealth;
+    [SerializeField] protected int currentHealth;
 
-    private void Start()
+    protected virtual void Start()
     {
-        currentHealt=maxHealth;
+        currentHealth=maxHealth.getValue();
     }
+    public virtual void doDamage(CharacterStats _target)
+    {
+        int finalDamage=damage.getValue();
 
-    public void takeDamge(int _damage)
-    {
-        currentHealt-=damage;
+        _target.takeDamge(finalDamage);
     }
+    public virtual void doStunDamage(CharacterStats _target)
+    {
+        _target.takeDamge(stunDamage.getValue());
+    }
+    public virtual void takeDamge(int _damage)
+    {
+        currentHealth-=_damage;
+
+        if(currentHealth <= 0)
+        {
+            die();
+        }
+    }
+    protected virtual void die()
+    {
+        
+    }
+    
 }

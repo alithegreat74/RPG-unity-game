@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
+    
     #region Vaiables
     public bool isBusy;
     [Header("Movement Info")]
@@ -30,6 +31,7 @@ public class Entity : MonoBehaviour
 
     [HideInInspector]public EntityFx entityFx;
     [HideInInspector] public CharacterStats stats;
+    [HideInInspector] public bool isDead=false;
     #endregion
     #region Components
     public Animator animator { get;set; }

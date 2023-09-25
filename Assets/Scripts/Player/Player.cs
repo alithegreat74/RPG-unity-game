@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    PlayerStateMachine stateMachine;
+    public PlayerStateMachine stateMachine { get; private set; }
     #region States
     public PlayerIdleState idleState {get;private set;}
     public PlayerMoveState moveState { get; private set; }
@@ -14,6 +14,7 @@ public class Player : Entity
     public PlayerWallSlideState wallSlideState { get; private set; }
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
+    public PlayerDeathState deathState { get; private set; }
 
     #endregion
     #region Variable
@@ -37,6 +38,7 @@ public class Player : Entity
         wallSlideState=new PlayerWallSlideState(this, stateMachine, "Wall Slide");
         wallJumpState=new PlayerWallJumpState(this, stateMachine, "Air");
         primaryAttackState=new PlayerPrimaryAttackState(this, stateMachine, "Attack");
+        deathState=new PlayerDeathState(this, stateMachine, "Death");
     }
 
 
