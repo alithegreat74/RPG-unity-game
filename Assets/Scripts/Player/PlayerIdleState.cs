@@ -22,6 +22,8 @@ public class PlayerIdleState : PlayerGroundState
     public override void Update()
     {
         base.Update();
+        player.setVelocity(0, 0);
+
         if (xInput!=0 && !player.wallDetected() && !player.isBusy && !inventory.activeUI)
             stateMachine.ChangeState(player.moveState);
 

@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91fefa46ab60c4645a01286865868efc, type: 3}
-  m_Name: Health Potion
+  m_Name: Flask Of Life
   m_EditorClassIdentifier: 
-  itemName: Health Potion
+  type: 3
+  itemName: Flask Of Life
   itemIcon: {fileID: 21300000, guid: c634ab7168846484b97902b66b7d4931, type: 3}

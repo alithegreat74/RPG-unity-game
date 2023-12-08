@@ -22,21 +22,28 @@ public class Inventory : MonoBehaviour
     }
     private static Inventory Instance;
     #endregion
-    #region UI
+
+    #region User Interface
     [Header("UI Manager")]
     [SerializeField]private GameObject inventoryGrid;
-    [SerializeField]private ItemSlotUI[] itemSlots;
+    //[SerializeField] private GameObject equipmentGrid;
     public bool activeUI=false;
+    private ItemSlotUI[] itemSlots;
     #endregion
-
+    [Header("Lists")]
     public List<InventoryItem> inventoryItems;
-    public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+    public List<EquipmentItem> equipmentItems;
+
+    private Dictionary<ItemData, InventoryItem> inventoryDictionary;
+    private Dictionary<ItemData,EquipmentItem> equipmentDictionary;
 
 
     private void Awake()
     {
         inventoryItems=new List<InventoryItem>();
         inventoryDictionary=new Dictionary<ItemData, InventoryItem>();
+        equipmentItems=new List<EquipmentItem>();
+        equipmentDictionary=new Dictionary<ItemData,EquipmentItem>();
         itemSlots=inventoryGrid.GetComponentsInChildren<ItemSlotUI>();
         inventoryGrid.SetActive(false);
     }
@@ -54,11 +61,42 @@ public class Inventory : MonoBehaviour
 
     public void updateUI()
     {
+        foreach(ItemSlotUI itemSlot in itemSlots)
+        {
+            itemSlot.clearUI();
+        }
         for(int i=0;i<inventoryItems.Count;i++)
         {
             itemSlots[i].setUI(inventoryItems[i]);
         }
     }
+
+    public void equipItem(ItemData _newItemData)
+    {
+        EquipmentItem newItem = new EquipmentItem(_newItemData);
+        EquipmentItem oldItem = null;
+
+        foreach(KeyValuePair<ItemData,EquipmentItem> item in equipmentDictionary)
+        {
+            if (_newItemData.type==item.Key.type)
+                oldItem= item.Value;
+        }
+
+        if(oldItem!=null)
+        {
+            equipmentItems.Remove(oldItem);
+            equipmentDictionary.Remove(oldItem.data);
+            addItem(oldItem.data);
+        }
+
+        removeItem(_newItemData);
+        equipmentDictionary.Add(_newItemData, newItem);
+        equipmentItems.Add(newItem);
+        updateUI();
+    }
+    
+
+    
 
     public void addItem(ItemData _newData)
     {

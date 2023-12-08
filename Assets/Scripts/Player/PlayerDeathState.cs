@@ -12,6 +12,7 @@ public class PlayerDeathState : PlayerState
     {
         base.Enter();
         player.setVelocity(0, 0);
+        player.isAlive= false;
     }
 
     public override void Exit()

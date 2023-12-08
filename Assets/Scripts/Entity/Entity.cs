@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Entity : MonoBehaviour
@@ -8,6 +7,7 @@ public class Entity : MonoBehaviour
     
     #region Vaiables
     public bool isBusy;
+    public bool isAlive = true;
     [Header("Movement Info")]
     public float moveSpeed;
     public float jumpForce;
@@ -63,8 +63,11 @@ public class Entity : MonoBehaviour
     }
     public virtual void flip()
     {
-        facingDirection*=-1;
-        transform.Rotate(0, 180, 0);
+        if (isAlive)
+        {
+            facingDirection*=-1;
+            transform.Rotate(0, 180, 0);
+        }
     }
     public virtual void damage(int hitDirection)
     {
