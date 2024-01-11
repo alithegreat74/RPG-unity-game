@@ -21,6 +21,8 @@ public class PlayerStats : CharacterStats
     public override void takeDamge(int _damage)
     {
         base.takeDamge(_damage);
+        NotifyObservers(currentHealth);
+
     }
 
     protected override void Start()

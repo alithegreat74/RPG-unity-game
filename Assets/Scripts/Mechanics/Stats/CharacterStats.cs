@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class CharacterStats : MonoBehaviour
+public class CharacterStats : HealthSubject
 {
     public Stat damage;
     public Stat stunDamage;

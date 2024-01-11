@@ -24,13 +24,13 @@ public class PlayerIdleState : PlayerGroundState
         base.Update();
         player.setVelocity(0, 0);
 
-        if (xInput!=0 && !player.wallDetected() && !player.isBusy && !inventory.activeUI)
+        if (xInput!=0 && !player.wallDetected() && !player.isBusy/* && !inventory.activeUI*/)
             stateMachine.ChangeState(player.moveState);
 
-        if(inventory.activeUI && Input.GetKeyDown(KeyCode.I)  && timer<0)
-        {
-            Debug.Log("Close Inventory");
-            inventory.disableUI();
-        }
+        //if(inventory.activeUI && Input.GetKeyDown(KeyCode.I)  && timer<0)
+        //{
+        //    Debug.Log("Close Inventory");
+        //    inventory.disableUI();
+        //}
     }
 }

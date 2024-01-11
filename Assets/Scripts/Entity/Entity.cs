@@ -32,6 +32,7 @@ public class Entity : MonoBehaviour
     [HideInInspector]public EntityFx entityFx;
     [HideInInspector] public CharacterStats stats;
     [HideInInspector] public bool isDead=false;
+
     #endregion
     #region Components
     public Animator animator { get;set; }
@@ -71,6 +72,8 @@ public class Entity : MonoBehaviour
     }
     public virtual void damage(int hitDirection)
     {
+        if(isDead)
+            return;
         Debug.Log(gameObject.name+" was hit");
         entityFx.StartCoroutine("flash");
         StartCoroutine("knockBack", hitDirection);
@@ -80,7 +83,6 @@ public class Entity : MonoBehaviour
         isKnocked=true;
         rb.velocity=new Vector2(hitDirection*knockDirection.x, knockDirection.y);
         yield return new WaitForSeconds(knockDuration);
-
         isKnocked = false;
     }
     #endregion

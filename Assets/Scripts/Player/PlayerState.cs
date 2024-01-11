@@ -35,12 +35,12 @@ public class PlayerState
 
         timer-=Time.deltaTime;
 
-        if (!inventory.activeUI && Input.GetKeyDown(KeyCode.I))
-        {
-            Debug.Log("Open Inventory");
-            inventory.enableUI();
-            stateMachine.ChangeState(player.idleState);
-        }
+        //if (!inventory.activeUI && Input.GetKeyDown(KeyCode.I))
+        //{
+        //    Debug.Log("Open Inventory");
+        //    inventory.enableUI();
+        //    stateMachine.ChangeState(player.idleState);
+        //}
 
     }
     public virtual void Exit()

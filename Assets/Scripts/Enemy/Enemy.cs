@@ -46,6 +46,7 @@ public class Enemy : Entity
     }
     public  virtual bool canGetStunned()
     {
+        
         if (canBeStunned)
         {
             closeStunWindow();

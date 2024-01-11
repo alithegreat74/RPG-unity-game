@@ -15,6 +15,7 @@ public class EnemySamuraiDeathState : EnemyState
         base.Enter();
         samurai.setVelocity(0, 0);
         timer=3f;
+        samurai.isDead = true;
     }
 
     public override void Exit()

@@ -23,7 +23,7 @@ public class PlayerGroundState : PlayerState
         base.Update();
         if (Input.GetKeyDown(KeyCode.Space))
             stateMachine.ChangeState(player.jumpState);
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !Inventory.instance.activeUI)
+        if (Input.GetKeyDown(KeyCode.Mouse0)/* && !Inventory.instance.activeUI*/)
             stateMachine.ChangeState(player.primaryAttackState);
         if (!player.groundDetected())
             stateMachine.ChangeState(player.fallState);
